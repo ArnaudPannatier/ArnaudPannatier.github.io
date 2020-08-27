@@ -1,0 +1,12 @@
+body,
+html {
+  height: 100%;
+  background-color: #fbfbfb;
+}
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 48px;
+  line-height: 48px;
+  padding: 0 30px;
+  text-align: center;
+}
