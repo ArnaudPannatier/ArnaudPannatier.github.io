@@ -1,108 +1,44 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<HTML>
-<HEAD>
-<META charset="UTF-8">
-<LINK REL=StyleSheet HREF="styleidiap.css" TYPE="text/css" MEDIA=screen>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<TITLE>Arnaud PANNATIER Idiap Personal Webpage</TITLE>
-<script>  
-    window.onload = function()
-{
-  document.getElementById("spanYear").innerHTML = new Date().getFullYear();
-}</script>
+<!doctype html>
+<html lang="en" class="text-gray-900 font-sans leading-tight">
 
-<!--Initial version made by [VS] vincent.spano@idiap.ch-->
-<!--date: Debember 05 2017-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="tailwind.css" rel="stylesheet">
+  <title>Arnaud PANNATIER - Ph.D. Student at Idiap</title>
+</head>
 
-<!--the page structure is defined has follow:-->
-<!--
-maincontainer
-	headercontainer
-		logocontainer
-		portraitcontainer
-    headercontainer
-        
-	yourname
-	
-	middlecontainer
-		contentcontainer
-    middlecontainer
-        
-	footercontainer
-      footertxt
-    footercontainer
-    
-maincontainer
--->
+<body class="min-h-screen bg-gray-100">
+  <header class="w-full border-b border-gray-300 py-4">
+    <a title="Idiap Research Institute" href="//www.idiap.ch">
+      <img class="block mx-auto h-16 w-60" title="" src="//www.idiap.ch/logo-idiap-blue.svg"
+        onerror="this.onerror=null; this.src='//www.idiap.ch/logo-idiap-blue.jpg'">
+    </a>
+  </header>
 
+  <h1>Arnaud Pannatier</h1>
+  <h2>Short Biography</h2>
+  <h2>Education</h2>
+  <strong>Tel:</strong> +41277217439
+  <strong>Office:</strong> CP306
+  <strong>Contact</strong>
+  <a title="Idiap contact form" href="//www.idiap.ch/en/people/directory/827/@@person-contact-form">
+    contact me !
+  </a>
+  </p>
 
-</HEAD>
-<BODY>
-<!--this is the main div "mainbcontainer" -->
-<div id="maincontainer"> 
-  <!--this is the begining of the header-->
-  <div id="headercontainer">
-    <div id="logocontainer" align="center">
-    	<a title="Idiap Research Institute" href="//www.idiap.ch">
-        	<img width="300px" height="80px" title="" src="//www.idiap.ch/logo-idiap-blue.svg" onerror="this.onerror=null; this.src='//www.idiap.ch/logo-idiap-blue.jpg'">
-        </a>
-    </div>
-    <div id="portraitcontainer" align="left">
-    	<img title="" class="imgportrait" src="//www.idiap.ch/people-img/people/Idiap Username.png" width="75" height="99" onerror="this.onerror=null; this.src='//www.idiap.ch/people-img/people/anonymous-portrait.jpg'">
-    </div>
   </div>
-  <!--end header--> 
-  
-  <div id="yourname">
-    <h1>Arnaud PANNATIER</h1>
   </div>
-  <!--this is the middle container which contains the main content text  -->
-  <div id="middlecontainer">
-  <!-- !!!!!!   do not modify the code above  !!!!!!!!--> 
-  
-  
-    <div id="contentcontainer"> 
 
-      <!--  ****************  insert content here below  *******************  -->
-      <h2>Short Biography</h2>
-      <p>&nbsp;</p>
-      <h2>Education</h2>
-      <p>&nbsp;</p>
-      <!--  ****************  end of insert content here  *******************  -->
-      
-      
-      <!-- !!!!!!   do not modify the code below  !!!!!!!!-->      
-      <br><hr>
-      <p>
-      	<strong>Tel:</strong> +41277217439
-        <br>
-        <strong>Office:</strong> CP308-7
-        <br>
-        
-        <strong>Contact</strong> 
-        <a title="Idiap contact form" href="//www.idiap.ch/en/people/directory/827/@@person-contact-form">
-        	<img src="//www.idiap.ch/mail_icon.gif" alt="" align="absmiddle">
-        </a>
-      </p>
-      
-      <!-- !!!!!!   do not modify the code below  !!!!!!!!--> 
-    </div>
+  <footer
+    class="h-6 fixed bottom-0 w-full block bg-gradient-to-r from-blue-400 to-blue-500 text-white text-center text-xs font-thin">
+    <a title="Idiap Research Institute" href="//www.idiap.ch" class="leading-6">
+      Idiap Research Institute
+    </a> 2017 - 2021
+  </footer>
+
   </div>
-  <!--end middle box--> 
-  <!--this is the begining of the footer-->
-  <div id="footercontainer">
-    <div id="footertxt">
-    	<span style="vertical-align:super">&copy; 
-        	<a title="Idiap Research Institute" href="//www.idiap.ch">
-            	Idiap Research Institute
-            </a> 2017-
-            <span id="spanYear">
-        	</span>
-        </span>
-    </div>
-  </div>
-  <!--end footerbox--> 
-</div>
-<!--end mainbox-->
-</BODY>
-</HTML>
+
+</body>
+
+</html>
