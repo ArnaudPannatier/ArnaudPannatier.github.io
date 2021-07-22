@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="tailwind.css" rel="stylesheet">
-  <title>Arnaud PANNATIER - Ph.D. Student at Idiap</title>
+  <title>Arnaud Pannatier - Ph.D. Student at Idiap</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700&amp;display=swap"
+    rel="stylesheet">
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-100 justify-between">
@@ -18,29 +20,56 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 divide-x divide-gray-300">
 
-    <div class="flex w-full">
+    <div class="flex">
       <div class="m-auto py-16">
         <div
           class="w-80 h-80 border-8 rounded-full flex items-center justify-center overflow-hidden border-white mx-auto shadow-lg">
           <img src="wedding1000x1000.jpg" class="object-cover h-80" />
         </div>
-        <h1>Arnaud Pannatier</h1>
+        <h1 class="mt-8">Arnaud Pannatier</h1>
+        <a href="https://fleuret.org/francois/" class="text-center italic block underline mb-4">François Fleuret's
+          Machine
+          Learning
+          Group</a>
 
-        <strong>Tel:</strong> +41277217439
-        <strong>Office:</strong> CP306-14
-        <strong>Contact</strong>
-        <a title="Idiap contact form" href="//www.idiap.ch/en/people/directory/827/@@person-contact-form">
-          contact me !
-        </a>
+        <table class="table-fixed p-3">
+          <tr>
+            <td><strong>Office:</strong></td>
+            <td> CP306-14 </td>
+          </tr>
+          <tr>
+            <td><strong>Mail:</strong></td>
+            <td><a class="underline" href="mailto:arnaud.pannatier@idiap.ch">arnaud.pannatier@idiap.ch </a></td>
+          </tr>
+          <tr>
+            <td><strong>Software:</strong></td>
+            <td><a class="underline" href="http://github.com/arnaudpannatier">http://github.com/arnaudpannatier</a></td>
+          </tr>
+        </table>
       </div>
     </div>
-    <div class="w-full h-full">
-      <h2>Short Biography</h2>
+    <div class="w-full h-full p-8">
+      <h2>About me</h2>
+      <p>
+        Hi ! I'm Arnaud. I started my PhD in <a href="https://fleuret.org/francois/about.html">François Fleuret</a>'s
+        Machine Learning group in March 2020.
+        I am trying to forecast wind at high-altitude based on live data. Current forecasts given by National Weather
+        agencies are too sparse in time and space to be reliable to manage air traffic.
+        We are trying to solve that problem by nowcast the wind based on the last aircraft's measurements.
+      </p>
+
       <h2>Education</h2>
+      <p>
+        I made a Bachelor in Physics followed by a Master in Computer Sciences and Engineering (CSE - MATH), both at
+        EPFL.
+        I recieved the Kudelski Award for my Master Thesis <i>A control plane in time and space for locality preserving
+          blockchains</i> in the <a href="https://www.epfl.ch/labs/dedis/">Decentralized Distributed Systems
+          Laboratory</a>.
+      </p>
     </div>
   </div>
 
-  <footer class="h-6 w-full block bg-gradient-to-r from-blue-400 to-blue-500 text-white text-center text-xs font-thin">
+  <footer class="h-6 w-full block bg-gradient-to-r from-blue-400 to-blue-500 text-white text-center text-xs">
     <a title="Idiap Research Institute" href="//www.idiap.ch" class="leading-6">
       Idiap Research Institute
     </a> 2017 - 2021
