@@ -7,9 +7,12 @@
     @apply text-2xl text-center;
   }
   h2 {
-    @apply text-xl text-center my-4;
+    @apply text-xl text-center my-4 font-bold;
   }
   td {
     @apply pr-3;
+  }
+  a {
+    @apply underline;
   }
 }
