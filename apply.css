@@ -4,10 +4,10 @@
 
 @layer base {
   h1 {
-    @apply text-2xl text-center;
+    @apply text-3xl text-center;
   }
   h2 {
-    @apply text-xl text-center my-4 font-bold;
+    @apply text-2xl text-center my-4 font-bold;
   }
   td {
     @apply pr-3;

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="text-gray-900 font-sans leading-tight">
+<html lang="en" class="text-gray-900 dark:text-slate-200 font-sans leading-tight">
 
 <head>
   <meta charset="UTF-8">
@@ -10,17 +10,21 @@
     rel="stylesheet">
 </head>
 
-<body class="flex flex-col min-h-screen bg-gray-100 justify-between">
-  <header class="w-full border-b border-gray-300 py-4">
+<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-slate-800  justify-between">
+  <header class="w-full border-b border-gray-300 dark:border-slate-600 py-4">
     <a title="Idiap Research Institute" href="//www.idiap.ch">
-      <img class="block mx-auto h-16 w-60" title="" src="//www.idiap.ch/logo-idiap-blue.svg" />
+      <picture>
+        <source srcset="https://idiap.ch/~apannatier/logo-idiap-white.svg" media="(prefers-color-scheme: dark)">
+        <img class="block mx-auto h-16 w-60" title="" src="//www.idiap.ch/logo-idiap-blue.svg" />
+
+      </picture>
     </a>
   </header>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 divide-x divide-gray-300">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-slate-600">
     <div class="flex">
       <div class="m-auto py-16">
         <div
-          class="w-80 h-80 border-8 rounded-full flex items-center justify-center overflow-hidden border-white mx-auto shadow-lg">
+          class="w-80 h-80 border-8 rounded-full flex items-center justify-center overflow-hidden border-white  mx-auto shadow-lg dark:shadow-slate-600">
           <img src="wedding1000x1000.jpg" class="object-cover h-80" />
         </div>
         <h1 class="mt-8">Arnaud Pannatier</h1>
@@ -88,15 +92,17 @@
       <h2><b>Publications</b></h2>
       <p>
         A. Pannatier, K. Matoba, F. Fleuret
-        <b>Transformer-based Modeling of Physical Systems: Improved Latent Representations</b>.
+        <b>Attention-based Modeling of Physical Systems: Improved Latent Representations</b>.
         <br />
         <a href="https://arxiv.org/abs/2210.11269" class="underline">arxiv</a>
       </p>
       <br />
       <p>
         F. Mai, A. Pannatier, F. Fehr, H. Chen, F. Marelli, F. Fleuret, J. Henderson
-        <b>HyperMixer: An MLP-based Green AI Alternative to Transformers</b>.
+        <b>HyperMixer: An MLP-based Low Cost Alternative to Transformers</b>.
+        In <em>Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL), 2023.</em>
         <br />
+        <a href="https://aclanthology.org/2023.acl-long.871/" class="underline">publication</a> /
         <a href="https://arxiv.org/abs/2203.03691" class="underline">arxiv</a>
       </p>
       <br />
@@ -114,11 +120,12 @@
     </div>
   </div>
 
-  <footer class="h-6 w-full block bg-gradient-to-r from-blue-400 to-blue-500 text-white text-center text-xs">
+  <footer class="h-6 w-full block bg-gradient-to-r from-blue-400 to-blue-500 dark:from-slate-800 dark:to-slate-800 dark:border-t dark:border-slate-600
+     text-white text-center text-xs overflow-hidden">
     <a title="Idiap Research Institute" href="//www.idiap.ch" class="leading-6">
       Idiap Research Institute
     </a>
-    2017 - 2022
+    2017 - 2024
   </footer>
 
   </div>

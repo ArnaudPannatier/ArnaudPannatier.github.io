@@ -1,9 +1,9 @@
 module.exports = {
-  purge: ["index.html"],
-  darkMode: false, // or 'media' or 'class'
+  content: ["index.html"],
   theme: {
     fontFamily: {
-      sans: ["Montserrat", "Helvetica", "Arial", "ui-sans-serif", "sans-serif"],
+      sans: ["Montserrat", "sans-serif"],
+      serif: ["Martel", "serif"],
     },
   },
   variants: {
