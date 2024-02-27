@@ -18,5 +18,6 @@ to setup for a new project for example:
 
 ```bash
 bun install -g tailwindcss
+bun install -g tailwind
 bun run tailwindcss init
 ```

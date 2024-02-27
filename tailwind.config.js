@@ -1,9 +1,9 @@
 module.exports = {
-  content: ["index.html"],
+  content: ["index.html", "maze.html"],
   theme: {
     fontFamily: {
-      sans: ["Montserrat", "sans-serif"],
-      serif: ["Martel", "serif"],
+      montserrat: ["Montserrat", "sans-serif"],
+      martel: ["Martel", "serif"],
     },
   },
   variants: {
