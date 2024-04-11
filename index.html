@@ -55,11 +55,11 @@
             <td><a class="underline" href="https://www.chess.com/member/_42_">_42_</a>
             </td>
           </tr>
-          <tr>
+          <!-- <tr>
             <td><strong>My way to Compostela:</strong></td>
             <td><a class="underline" href="http://maisousontmarionetarnaud.ch">http://maisousontmarionetarnaud.ch </a>
             </td>
-          </tr>
+          </tr> -->
         </table>
       </div>
     </div>
@@ -67,22 +67,26 @@
       <h2><b>About me</b></h2>
       <p>
         Hi ! I'm Arnaud. I started my PhD in <a href="https://fleuret.org/francois/about.html">François Fleuret</a>'s
-        Machine Learning group in March 2020.
-        I am trying to forecast wind at high-altitude based on live data. Current forecasts given by National Weather
+        Machine Learning group in March 2020 and I plan to defend it in August 2024.
+        My most recent work is on <a href="/sigma-gpt">σ-GPTs</a>, a novel way to train GPT in a non left-to-right order.
+        The main idea is to train the model to generate sequences in a random order, which allow conditional density estimation, infilling and generating sequences by burst using a novel rejection sampling method. 
+      </p>
+        In exploring that idea, we aslo compared to a discrete diffusion baseline, which also allows to generate sequences in burst. We were surprised to see that diffusion models were able to solve path-finding task and we made a short <a href="https://twitter.com/ArnaudPannatier/status/1762864347397628396">Twitter thread</a> (seen 192k times).
+      <p>
+        In the first part of my Ph.D, I am trying to forecast wind at high-altitude based on live data. Current forecasts given by National Weather
         agencies are too sparse in time and space to be reliable to manage air traffic.
-        We are trying to solve that problem by nowcast the wind based on the last aircraft's measurements. Our first
-        work on that task introduced a GPU-accelerated kernel method.
-        In our second work, we tried a transformer-based approach and managed to increase the accuracy of our model.
+        We are trying to solve that problem by nowcast the wind based on the last aircraft's measurements. We first introduced<a href="https://arxiv.org/abs/2112.10408">a GPU-accelerated smart kernel averaging method</a>, published at SIAM Data Mining 2022.
+        We then noticed that sets of measurements are naturally modelled by attention-based models, and we introduced <a href="https://arxiv.org/abs/2210.11269">a single stack transformer encoder</a> which takes as input both the aircraft's measurements and the query point to predict, processing them at the same time using full attention.
       </p>
       <br />
       <p>
-        I worked recently on HyperMixer, which is based on Florian Mai's idea to use hypernetworks to enable MLPMixer to
+        I also worked on HyperMixer, which is based on Florian Mai's idea to use hypernetworks to enable MLPMixer to
         handle various length inputs. This allowed the model to handle inputs in a permutation-invariant manner, and we
         showed that it gave the model a kind of attention behavior which scales linearly with the input length.
       </p>
       <br />
       <p>
-        I made a Bachelor in Physics followed by a Master in Computer Sciences and Engineering (CSE - MATH), both at
+        Before my Ph.D., I made a Bachelor in Physics followed by a Master in Computer Sciences and Engineering (CSE - MATH), both at
         EPFL.
         I recieved the Kudelski Award for my Master Thesis <i>A control plane in time and space for locality preserving
           blockchains</i> in the <a href="https://www.epfl.ch/labs/dedis/">Decentralized Distributed Systems Laboratory
@@ -91,10 +95,20 @@
 
       <h2><b>Publications</b></h2>
       <p>
-        A. Pannatier, K. Matoba, F. Fleuret
-        <b>Attention-based Modeling of Physical Systems: Improved Latent Representations</b>.
+        A. Pannatier, E. Courdier, F. Fleuret
+        <b>σ-GPTs: A New Approach to Autoregressive Models</b>.
         <br />
-        <a href="https://arxiv.org/abs/2210.11269" class="underline">arxiv</a>
+        <a href="/sigma-gpt/">Website</a> /
+        Preprint to appear.
+      </p>
+      <br />
+      <p>
+        A. Pannatier, K. Matoba, F. Fleuret
+        <b>Inference from Real-World Sparse Measurements</b>.
+        In <em>Transactions on Machine Learning Research (TMLR), 2024.</em>
+        <br />
+        <a href="https://openreview.net/forum?id=y9IDfODRns" class="underline">openreview</a> / 
+        <a href="https://arxiv.org/abs/2210.11269" class="underline">arxiv</a> 
       </p>
       <br />
       <p>

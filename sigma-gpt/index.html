@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link href="tailwind.css" rel="stylesheet" />
+    <title>Submission 1127 - σ-GPTs - Examples</title>
+  </head>
+  <body class="container mx-auto">
+    <h1 class="text-4xl font-bold text-center my-8">
+      Submission 1127 - σ-GPTs - Examples
+    </h1>
+    <section>
+      <h2 class="text-2xl font-bold my-4">Text</h2>
+      Here we showcase how generating sequence with σ-GPT and GPT looks like.
+      Note that the results are prerecorded for the sake of this demonstration
+      and no actual generation is happening here.
+      <br />
+      We use the same model, once with rejection sampling, once generating in a
+      random order, and once generating sequences causally.
+      <br />
+      We did not cherry picked the results (all 3 corresponds to seed 0).
+      <br />
+      Theses sequences are recorded, the steps for rejection sampling are played again with an interval of 250ms, the other two with an interval of 50ms.
+      <article id="txt" x-data="displayGPT('rejection', 250)">
+        <h3 class="text-xl font-bold text-justify my-4">
+          σ-GPT with rejection sampling
+        </h3>
+        <span x-text="`${currentIndex + 1}/${txts.length}`"></span>
+        <code
+          x-text="currentText"
+          class="text-xs block bg-slate-100 p-5 font-mono text-justify"
+        ></code>
+        <br />
+        <button
+          @click="restartInterval"
+          class="px-4 py-2 bg-blue-500 text-white font-bold rounded"
+        >
+          Restart
+        </button>
+        <button
+          @click="stopInterval"
+          class="px-4 py-2 ml-2 bg-red-500 text-white font-bold rounded"
+        >
+          Stop
+        </button>
+      </article>
+      <article id="txt" x-data="displayGPT('random', 50)">
+        <h3 class="text-xl font-bold my-4">σ-GPT</h3>
+        <span x-text="`${currentIndex + 1}/${txts.length}`"></span>
+        <code
+          x-text="currentText"
+          class="text-xs block bg-slate-100 p-5"
+        ></code>
+        <br />
+        <button
+          @click="restartInterval"
+          class="px-4 py-2 bg-blue-500 text-white font-bold rounded"
+        >
+          Restart
+        </button>
+        <button
+          @click="stopInterval"
+          class="px-4 py-2 ml-2 bg-red-500 text-white font-bold rounded"
+        >
+          Stop
+        </button>
+      </article>
+      <article id="txt" x-data="displayGPT('causal', 50)">
+        <h3 class="text-xl font-bold my-4">GPT</h3>
+        <span x-text="`${currentIndex + 1}/${txts.length}`"></span>
+        <code
+          x-text="currentText"
+          class="text-xs block bg-slate-100 p-5"
+        ></code>
+        <br />
+        <button
+          @click="restartInterval"
+          class="px-4 py-2 bg-blue-500 text-white font-bold rounded"
+        >
+          Restart
+        </button>
+        <button
+          @click="stopInterval"
+          class="px-4 py-2 ml-2 bg-red-500 text-white font-bold rounded"
+        >
+          Stop
+        </button>
+      </article>
+      <article id="txt" x-data="displayGPT('bst', 50)">
+        <h3 class="text-xl font-bold my-4">Fractal GPT</h3>
+        <span x-text="`${currentIndex + 1}/${txts.length}`"></span>
+        <code
+          x-text="currentText"
+          class="text-xs block bg-slate-100 p-5"
+        ></code>
+        <br />
+        <button
+          @click="restartInterval"
+          class="px-4 py-2 bg-blue-500 text-white font-bold rounded"
+        >
+          Restart
+        </button>
+        <button
+          @click="stopInterval"
+          class="px-4 py-2 ml-2 bg-red-500 text-white font-bold rounded"
+        >
+          Stop
+        </button>
+      </article>
+    </section>
+    <section>
+      <h2 class="text-2xl font-bold my-4">Path-Solving</h2>
+      Here we showcase how σ-GPT can be used to solve path-finding problems. In
+      particular how rejection sampling allow to finish some samples first, and
+      then can continue to solve the rest of the samples.
+      <br>
+      Red indicates a wrong path, white a valid completed path.
+      
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="w-full my-4 text-center">
+          
+        <h3>σ-GPT Rejection Sampling</h3>        
+        <img
+          src="output.gif"
+          class="w-full"
+
+          alt="Path-Solving"
+          style="
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+          "
+        />
+      </div>
+      <div class="my-4 text-center">
+          
+        <h3>Diffusion</h3>        
+        <img
+          src="mazes_loop.gif"
+          alt="Path-Solving"
+          class="w-full"
+          style="
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+          "
+        />
+      </div>
+
+    </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold my-4">Vertical Rate Prediction</h2>
+      Same for vertical rate prediction.
+
+      <br>
+      Here a black border indicates a completed sequence.
+      
+      <div class="grid grid-cols-2 gap-4">
+        <div class="w-full my-4 text-center">
+          
+        <h3>σ-GPT Rejection Sampling</h3>        
+        <img
+          src="climbingrate.gif"
+          class="w-full"
+          alt="Vertical Rate Prediction"
+        />
+
+      </div>
+
+      <div class="my-4 text-center">
+          
+        <h3>Diffusion</h3>        
+        <img
+          src="diffusion.gif"
+          alt="Vertical Rate Prediction"
+          class="w-full"
+        />
+      
+      
+    </section>
+  </body>
+  <script src="recordings.js"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <script>
+    function displayGPT(key, time) {
+      return {
+        txts: [],
+        currentIndex: 0,
+        currentText: "Loading txts...",
+        intervalId: null,
+        stopped: false,
+        init() {
+            console.log("Init");
+            console.log(key);
+
+            text = txt[key];      
+            // filter and pad with space to the max length
+            this.txts = text.filter((line) => line.trim() !== "");
+            max_length = Math.max(...this.txts.map((x) => x.length));
+            console.log(max_length);
+            this.txts = this.txts.map((x) => x.padEnd(max_length));
+            lengths = this.txts.map((x) => x.length);
+            console.log(lengths);
+            this.startInterval();
+        },
+        startInterval() {
+          console.log("Start");
+          this.intervalId = setInterval(() => {
+            if (this.currentIndex >= this.txts.length - 1) {
+              clearInterval(this.intervalId);
+              this.currentText = this.txts[this.currentIndex];
+            } else {
+              this.currentIndex += 1;
+              this.currentText = this.txts[this.currentIndex];
+            }
+          }, time);
+        },
+        restartInterval() {
+          clearInterval(this.intervalId);
+          if (this.stopped) {
+            this.stopped = false;
+          } else {
+            this.currentIndex = 0;
+          }
+          this.startInterval();
+        },
+        stopInterval() {
+          console.log(this.intervalId);
+          console.log("Stop");
+          clearInterval(this.intervalId);
+          this.stopped = true;
+          // this.currentText = 'Interval stopped.';
+        },
+      };
+    }
+  </script>
+</html>
