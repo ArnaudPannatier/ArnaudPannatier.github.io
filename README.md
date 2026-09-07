@@ -38,5 +38,5 @@ the generated folder to `master` to deploy GitHub Pages. Publish that folder to
 the existing Infomaniak site with:
 
 ```bash
-rsync -av sol-end-of-life/ arnaud_infomaniak:sites/arnaudpannatier.ch/sol-end-of-life/
+rsync -av sol-end-of-life/ mp4vc_skysoft@mp4vc.ftp.infomaniak.com:sites/arnaudpannatier.ch/sol-end-of-life/
 ```
