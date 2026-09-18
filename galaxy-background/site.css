@@ -149,12 +149,11 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  min-width: 82px;
-  min-height: 36px;
-  padding: 8px 13px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 50%;
   background: var(--panel);
   backdrop-filter: blur(12px);
   color: var(--muted);
@@ -162,6 +161,7 @@ footer {
   cursor: pointer;
 }
 #galaxy-pause[hidden] { display: none; }
+#pause-label { display: none; }
 #pause-symbol { width: 9px; color: var(--accent); }
 .galaxy-telemetry {
   position: fixed;
@@ -171,12 +171,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 9px;
-  min-height: 36px;
-  padding: 8px 13px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--panel);
-  backdrop-filter: blur(12px);
+  min-height: 40px;
   color: var(--muted);
   font-size: 10px;
   font-variant-numeric: tabular-nums;
@@ -219,11 +214,8 @@ footer {
   #biography-text h2 { font-size: 22px; margin-bottom: 26px; }
   #biography-text h2:not(:first-child) { margin-top: 48px; }
   #theme-toggle { top: 14px; right: 16px; width: 40px; height: 40px; }
-  .galaxy-telemetry { right: max(12px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); gap: 6px; padding: 10px 11px; font-size: 9px; }
+  .galaxy-telemetry { right: max(12px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); gap: 6px; font-size: 9px; }
   .galaxy-controls { left: max(12px, env(safe-area-inset-left)); bottom: max(14px, env(safe-area-inset-bottom)); }
-  #pause-label { display: none; }
-  #galaxy-pause { min-width: 40px; width: 40px; height: 40px; }
-  .galaxy-telemetry { min-height: 40px; }
 }
 @media (max-width: 360px) {
   #story { width: calc(100% - 36px); }
@@ -231,7 +223,7 @@ footer {
   #profile table { font-size: 11px; }
   #profile td strong { font-size: 9px; }
   #profile td:first-child { padding-right: 10px; }
-  .galaxy-telemetry { gap: 4px; padding-inline: 8px; }
+  .galaxy-telemetry { gap: 4px; }
 }
 @media (prefers-reduced-motion: reduce) {
   #story, #galaxy, body::before, .theme-disc, .galaxy-controls, .galaxy-telemetry, #theme-toggle, footer { transition: none; }
