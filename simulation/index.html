@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070910" />
+    <meta
+      name="description"
+      content="Watch a rotating cloud collapse into a spiral galaxy. An interactive 3D simulation computed on your GPU."
+    />
+    <title>N corps — A galaxy in the making</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23070910'/%3E%3Cellipse cx='32' cy='32' rx='24' ry='10' transform='rotate(-35 32 32)' fill='none' stroke='%23ddad79' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23fff0d8'/%3E%3C/svg%3E"
+    />
+    <script type="module" crossorigin src="./assets/index-Dfl38T-G.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BmJhtV_J.css">
+  </head>
+  <body>
+    <canvas
+      id="universe"
+      aria-label="Interactive 3D galaxy simulation. Drag to orbit, scroll to zoom."
+      tabindex="0"
+    ></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <header>
+      <a class="brand" href="./" aria-label="N corps home"
+        ><span class="brand-mark">n<span>·</span></span> corps
+        <span class="brand-divider"></span
+        ><span class="brand-subtitle">GRAVITATIONAL SANDBOX</span></a
+      >
+      <button
+        id="about-button"
+        class="quiet-button"
+        aria-expanded="false"
+        aria-controls="about"
+      >
+        About the simulation <span>↗</span>
+      </button>
+    </header>
+    <main>
+      <section class="intro">
+        <div class="eyebrow">
+          <span class="live-dot"></span> A UNIVERSE IN MOTION
+        </div>
+        <h1>A galaxy<br />in the making<span>.</span></h1>
+        <p>From a cloud of possibility<br />to a spiral of stars.</p>
+      </section>
+      <aside class="panel" aria-label="Simulation controls">
+        <div class="panel-heading">
+          <span>THE EXPERIMENT</span
+          ><button
+            id="full-perf"
+            class="perf-button"
+            aria-pressed="false"
+            title="Rapidly increase particles until frame rate drops"
+          >
+            Full perf
+          </button>
+        </div>
+        <div class="stat-row">
+          <div>
+            <span class="label">Particles</span
+            ><strong id="particle-count">32,768</strong>
+          </div>
+          <div class="fps-stat">
+            <span class="label">Live frame rate</span
+            ><strong><span id="fps">—</span><small> FPS</small></strong
+            ><span id="frame-time" class="frame-time">Measuring frames…</span
+            ><span
+              id="gpu-time"
+              class="frame-time"
+              title="Measured GPU work, separate from the display frame interval"
+              >Measuring GPU…</span
+            >
+          </div>
+        </div>
+        <div class="performance">
+          <span id="performance-dot" class="live-dot"></span
+          ><span id="performance-status">Finding your GPU’s rhythm</span
+          ><span class="target">60 FPS target</span>
+        </div>
+        <div class="rule"></div>
+        <label class="switch-row" for="adaptive"
+          ><span
+            >Adaptive particles<small
+              >More detail when your GPU has room</small
+            ></span
+          ><input type="checkbox" id="adaptive" checked role="switch" /><span
+            class="switch"
+            aria-hidden="true"
+          ></span
+        ></label>
+        <div id="manual-control" hidden>
+          <label class="range-label" for="particles"
+            >Particle budget <output id="budget-output">32,768</output></label
+          ><input
+            id="particles"
+            type="range"
+            min="11"
+            max="18"
+            step="0.01"
+            value="15"
+          />
+        </div>
+        <label class="range-label" for="speed"
+          >Time speed <output id="speed-output">1.0×</output></label
+        >
+        <input
+          id="speed"
+          type="range"
+          min="0.25"
+          max="2"
+          step="0.25"
+          value="1"
+        />
+        <div class="range-captions">
+          <span>Contemplate</span><span>Fast forward</span>
+        </div>
+        <div class="button-row">
+          <button
+            id="pause"
+            aria-label="Pause simulation"
+            class="primary-button"
+          >
+            <span id="pause-icon">Ⅱ</span
+            ><span id="pause-label">Pause</span></button
+          ><button id="restart" class="secondary-button">
+            <span>↻</span> New cloud
+          </button>
+        </div>
+        <div class="view-label">PERSPECTIVE</div>
+        <div class="segmented" aria-label="Camera perspective">
+          <button data-view="orbit" aria-pressed="true">Orbit</button
+          ><button data-view="top" aria-pressed="false">Top</button
+          ><button data-view="edge" aria-pressed="false">Edge</button>
+        </div>
+        <div class="zoom-controls" role="group" aria-label="Zoom">
+          <button id="zoom-out" aria-label="Zoom out" title="Zoom out">
+            −
+          </button>
+          <button id="reset-view" title="Reset camera to the whole galaxy">
+            Reset view
+          </button>
+          <button
+            id="zoom-in"
+            aria-label="Zoom into center"
+            title="Zoom into center"
+          >
+            +
+          </button>
+        </div>
+        <label class="switch-row particle-style" for="solid-particles">
+          <span>Solid particles</span>
+          <input type="checkbox" id="solid-particles" role="switch" />
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+        <div id="opacity-control" class="opacity-control" hidden>
+          <label class="range-label" for="solid-opacity"
+            >Solid alpha <output id="opacity-output">100%</output></label
+          >
+          <input
+            id="solid-opacity"
+            type="range"
+            min="0"
+            max="1"
+            step="0.05"
+            value="1"
+          />
+        </div>
+      </aside>
+      <section id="about" class="about" hidden>
+        <button id="close-about" aria-label="Close about">×</button>
+        <div class="eyebrow">A LITTLE COSMIC CONTEXT</div>
+        <h2>Gravity, with a little direction.</h2>
+        <p>
+          A rotating 3D cloud cools and contracts into a disk. Particles feel
+          sampled mutual gravity, a smooth dark-matter halo, and a rotating
+          two-arm spiral potential.
+        </p>
+        <p>
+          The spiral potential models a density wave; gas damping helps
+          particles collect along its arms. This is an accelerated, illustrative
+          galaxy model, not a scientific prediction of galaxy formation.
+        </p>
+        <p>
+          WebGL2 shaders initialize and integrate every particle on the GPU.
+          Adaptive mode adjusts the actual simulated population toward 60 FPS.
+          Hardware, display refresh rate, and browser load set the practical
+          limit. Full perf rapidly increases the population until FPS falls,
+          then backs off to the last smooth count. Buffers grow as needed; there
+          is no fixed particle cap, but GPU memory and WebGL texture limits
+          still apply. GPU timing shows work separately from display frame time.
+        </p>
+        <p>
+          <strong>Browser renderer</strong><br /><span id="gpu-renderer"
+            >Detecting…</span
+          >
+        </p>
+        <div class="about-keys">
+          <kbd>Space</kbd> pause <kbd>R</kbd> new cloud <kbd>Drag</kbd> orbit
+          <kbd>Scroll</kbd> zoom
+        </div>
+      </section>
+      <section id="error" class="error" hidden role="alert">
+        <h2>A little more GPU is needed.</h2>
+        <p id="error-message"></p>
+        <button onclick="location.reload()" class="primary-button">
+          Try again
+        </button>
+      </section>
+    </main>
+    <footer>
+      <div class="formation">
+        <div class="formation-heading">
+          <span id="phase">01 — PRIMORDIAL CLOUD</span
+          ><span id="elapsed">0.0 s</span>
+        </div>
+        <div class="timeline">
+          <div id="progress"></div>
+          <i></i><i></i>
+        </div>
+        <div class="timeline-labels">
+          <span>Cloud</span><span>Collapse</span><span>Spiral</span>
+        </div>
+      </div>
+      <div class="interaction-hint">
+        <span>↔</span> Drag to orbit <b>·</b> Scroll to explore
+      </div>
+      <div class="engine">
+        <span class="live-dot"></span> WEBGL 2 <span>/</span> GPU COMPUTE
+      </div>
+    </footer>
+  </body>
+</html>

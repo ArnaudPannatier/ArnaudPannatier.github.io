@@ -1,16 +1,39 @@
 <!doctype html>
-<html lang="en" class="text-gray-900 dark:text-slate-200 font-montserrat leading-tight">
+<html data-theme="dark" lang="en" class="text-gray-900 dark:text-slate-200 font-montserrat leading-tight">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    try { document.documentElement.dataset.theme = localStorage.getItem('site-theme') === 'light' ? 'light' : 'dark'; } catch {}
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('intro');
+      setTimeout(() => document.documentElement.classList.remove('intro'), 5000);
+    }
+  </script>
   <link href="tailwind.css" rel="stylesheet">
+  <link href="galaxy-background/site.css" rel="stylesheet">
+  <script type="module" src="galaxy-background/page.js"></script>
+  <script type="module" src="galaxy-background/background.js"></script>
   <title>Arnaud Pannatier - Ph.D. Student at Idiap</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700&amp;display=swap"
     rel="stylesheet">
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-100 dark:bg-slate-800  justify-between">
+  <canvas id="galaxy" aria-hidden="true"></canvas>
+  <button id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode"><span class="theme-disc" aria-hidden="true"></span></button>
+  <div class="galaxy-telemetry" aria-label="Galaxy performance">
+    <span><span id="particle-count">—</span> particles</span><span aria-hidden="true">·</span>
+    <span><span id="fps">—</span> FPS</span><span aria-hidden="true">·</span>
+    <a href="simulation/">Galaxy ↗</a>
+  </div>
+  <div class="galaxy-controls">
+    <span id="galaxy-status" role="status" class="galaxy-sr-only">Live galaxy</span>
+    <button id="galaxy-pause" type="button" aria-label="Pause background animation" aria-pressed="false" disabled>
+      <span id="pause-symbol" aria-hidden="true">Ⅱ</span> <span id="pause-label">Pause background</span>
+    </button>
+  </div>
   <!-- <header class="w-full border-b border-gray-300 dark:border-slate-600 py-4">
     <a title="Idiap Research Institute" href="//www.idiap.ch">
       <picture>
@@ -20,12 +43,12 @@
       </picture>
     </a>
   </header> -->
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-slate-600">
-    <div class="flex">
-      <div class="m-auto py-16">
+  <div id="story" class="grid grid-cols-1 lg:grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-slate-600">
+    <div class="profile-column flex">
+      <div id="profile" class="m-auto py-16">
         <div
           class="w-80 h-80 border-8 rounded-full flex items-center justify-center overflow-hidden border-white  mx-auto shadow-lg dark:shadow-slate-600">
-          <img src="wedding1000x1000.jpg" class="object-cover h-80" />
+          <img alt="Arnaud Pannatier" src="wedding1000x1000.jpg" class="object-cover h-80" />
         </div>
         <h1 class="mt-8">Arnaud Pannatier</h1>
         <p class="text-center">Research Scientist in Deep Learning at Skysoft ATM</p>
@@ -65,7 +88,8 @@
         </table>
       </div>
     </div>
-    <div class="w-full h-full p-8">
+    <div id="biography" class="w-full h-full p-8">
+      <div id="biography-text">
       <h2><b>About me</b></h2>
       <p>
         Hi ! I'm Arnaud. I'm a Research Scientist in Deep Learning at Skysoft ATM in Geneva Switzerland.
@@ -106,9 +130,9 @@
       </p>
 
       <h2><b>Publications</b></h2>
-      <p>
+      <p class="publication"><span class="publication-authors">
         A. Pannatier, E. Courdier, and F. Fleuret
-        <b>σ-GPTs: A New Approach to Autoregressive Models</b>.
+        </span><b>σ-GPTs: A New Approach to Autoregressive Models</b>.
         In <em> Proceedings of the European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML/PKDD)</em>, 2024.
         <br />
         <a href="sigma-gpt/">demo web</a> /
@@ -116,9 +140,9 @@
         <a href="https://twitter.com/ArnaudPannatier/status/1799055129829839166" >twitter thread</a> 
       </p>
       <br />
-      <p>
+      <p class="publication"><span class="publication-authors">
         A. Pannatier, K. Matoba, and F. Fleuret
-        <b>Inference from Real-World Sparse Measurements</b>.
+        </span><b>Inference from Real-World Sparse Measurements</b>.
         In <em>Transactions on Machine Learning Research (TMLR)</em>, 2024.
         <br />
         <a href="https://openreview.net/forum?id=y9IDfODRns">openreview</a> / 
@@ -126,9 +150,9 @@
         <a href="https://github.com/idiap/inference-from-real-world-sparse-measurements">code</a> 
       </p>
       <br />
-      <p>
+      <p class="publication"><span class="publication-authors">
         F. Mai, A. Pannatier, F. Fehr, H. Chen, F. Marelli, F. Fleuret, and J. Henderson
-        <b>HyperMixer: An MLP-based Low Cost Alternative to Transformers</b>.
+        </span><b>HyperMixer: An MLP-based Low Cost Alternative to Transformers</b>.
         In <em>Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL)</em>, 2023.
         <br />
         <a href="https://aclanthology.org/2023.acl-long.871/">publication</a> /
@@ -139,9 +163,9 @@
         
       </p>
       <br />
-      <p>
+      <p class="publication"><span class="publication-authors">
         A. Pannatier, R. Picatoste, and F. Fleuret.
-        <b>Efficient Wind Speed Nowcasting with GPU-Accelerated Nearest
+        </span><b>Efficient Wind Speed Nowcasting with GPU-Accelerated Nearest
           Neighbors Algorithm</b>.
         In <em>Proceedings of the SIAM International Conference on Data
           Mining (SDM)</em>, 2022.
@@ -150,6 +174,8 @@
         <a href="https://arxiv.org/abs/2112.10408">arxiv</a> /
         <a href="windnowcasting-sdm22.pdf">slides</a>
       </p>
+      </div>
+      <div class="scroll-outro" aria-hidden="true"></div>
     </div>
   </div>
 
@@ -160,8 +186,6 @@
       Arnaud Pannatier
      2024
   </footer>
-
-  </div>
 
 </body>
 
